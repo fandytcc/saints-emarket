@@ -2,9 +2,11 @@
 
 import CartItem from "@/app/components/cart/CartItem";
 import CartContext from "@/app/store/cart-context";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function CartPage() {
+  const router = useRouter()
   const cartCtx = useContext(CartContext)
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
@@ -20,6 +22,12 @@ export default function CartPage() {
   
   return (
     <>
+      <button 
+        className="p-2 bg-teal-500 rounded mb-3" type="button"
+        onClick={() => router.back()}>
+        Home
+      </button>
+
       <h1 className="text-2xl font-bold">Cart</h1>
       
       <ul className="">
