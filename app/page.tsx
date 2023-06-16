@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Navigation } from './components/ui/Navigation'
 import CartIcon from './components/cart/CartIcon'
-import CartProvider from './store/CartProvider'
 
 async function getCategories() {
   const res = await fetch('https://esaintsmarket.onrender.com/categories')
@@ -28,7 +27,6 @@ export default async function Home() {
   })
 
   return (
-    <CartProvider>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
           <h1 className='text-3xl font-bold relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert'>Saint eMarket</h1>
@@ -52,6 +50,5 @@ export default async function Home() {
           <Navigation navLinks={navLinks}/>
         </div>
       </main>
-    </CartProvider>
   )
 }
