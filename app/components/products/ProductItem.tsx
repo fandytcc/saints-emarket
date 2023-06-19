@@ -27,13 +27,12 @@ export default function ProductItem(props: any) {
     <Card>
       <li className="p-4">
           <div className='flex flex-row justify-around'>
-            <img src={props.image} alt={props.name} width="200" height="75" className='object-cover'/>
-            {/* <Image className="relative" 
+              <Image className="relative object-cover" 
                 src={props.image} 
                 alt={props.name}
-                width={180}
-                height={37}
-                priority/> */}
+                width={200}
+                height={75}
+                priority/>
             <div className='p-4 w-1/2'>
               <h3 className='text-xl text-black'>{props.name}</h3>
               <p>€{props.price.toFixed(2)}</p>

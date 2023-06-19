@@ -1,6 +1,7 @@
 'use client'
 
 import Card from "@/app/components/ui/Card"
+import Image from 'next/image'
 import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import { Suspense } from "react"
@@ -40,7 +41,12 @@ export default async function ProductDetailPage({
 
       <Suspense fallback={<Loading />}>
         <Card>
-          <img src={product.image} alt={product.name} width="500" height="75"/>
+          <Image 
+              src={product.image} 
+              alt={product.name}
+              width={500}
+              height={75}
+              priority />
           <div className="p-2 my-2 bg-teal-200 rounded-lg w-fit">{product.category}</div>
           <h2 className="text-lg font-bold">{product.name}</h2>
           <p className="py-2">€{product.price}</p>

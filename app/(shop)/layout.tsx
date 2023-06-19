@@ -6,7 +6,7 @@ export default function ShopLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="">
+    <main className="w-2/3">
       {children}
     </main>
   )

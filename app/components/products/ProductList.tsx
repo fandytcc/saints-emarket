@@ -2,7 +2,7 @@ import { Product } from "@/app/models/product.model";
 import ProductItem from "./ProductItem";
 
 
-export default function ProductList(props: any) {
+export default function ProductList( props: { products: Product[] } ) {
   return (
     <ul className="list-none m-0 p-0">
       {props.products.map((product: Product) => (

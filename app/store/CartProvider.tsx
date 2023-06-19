@@ -2,6 +2,7 @@
 
 import { useReducer } from "react"
 import CartContext from "./cart-context"
+import { CartInfo } from "../models/cart-info.model"
 
 const defaultCartState = {
   items: [],
@@ -12,7 +13,8 @@ const cartReducer = (state: any, action: any) => {
   if (action.type === 'ADD_CART_ITEM') {
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount
         
-    const existingCartItemIndex = state.items.findIndex((item: any) => item.id === action.item.id)
+    const existingCartItemIndex = state.items.findIndex(
+      (item: CartInfo) => item.id === action.item.id)
     const existingCartItem = state.items[existingCartItemIndex]
 
     let updatedItems
@@ -35,7 +37,24 @@ const cartReducer = (state: any, action: any) => {
   }
 
   if (action.type === 'REMOVE_CART_ITEM') {
+    const existingCartItemIndex = state.items.findIndex(
+      (item: CartInfo) => item.id === action.id)
+    const existingCartItem = state.items[existingCartItemIndex]
+    const updatedTotalAmount = state.totalAmount - existingCartItem.price
 
+    let updatedItems
+    if (existingCartItem.amount === 1) {
+        updatedItems = state.items.filter((item: CartInfo) => item.id !== action.id)
+    } else {
+        const updatedItem = {...existingCartItem, amount: existingCartItem.amount - 1}
+        updatedItems = [...state.items]
+        updatedItems[existingCartItemIndex] = updatedItem
+    }
+
+    return {
+        items: updatedItems, 
+        totalAmount: updatedTotalAmount
+    }
   }
 
   if (action.type === 'CLEAR') {
@@ -45,8 +64,7 @@ const cartReducer = (state: any, action: any) => {
   return defaultCartState
 }
 
-// TODO: productItemForm to add, Cart item add & remove
-// use ReactQuery, api route for fetching
+// TODO: clear cart, use ReactQuery, api route for fetching, useState & useEffect to fetch products
 
 const CartProvider = (props: any) => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
