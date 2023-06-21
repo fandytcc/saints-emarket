@@ -1,9 +1,10 @@
 import Card from "@/app/components/ui/Card"
 import Image from 'next/image'
 import dynamic from "next/dynamic"
-import { Suspense } from "react"
+
 import { getData as getProduct } from "@/app/utils/api"
 import { PRODUCTS } from "@/app/utils/const"
+import { Suspense } from "react"
 
 const Loading = dynamic(() => import('../loading'))
 

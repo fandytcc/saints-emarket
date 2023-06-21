@@ -27,7 +27,7 @@ export default function MealItemForm(props: any) {
   }
 
   return (
-    <form className="text-right inline-flex mt-4" onSubmit={submitHandler}>
+    <form className="text-right inline-flex" onSubmit={submitHandler}>
         <TextInput label="Amount" ref={amountInputRef} 
           input={{
             id: 'amount_' + props.id, 

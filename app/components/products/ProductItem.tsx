@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
 import Card from '../ui/Card'
-import MealItemForm from './ProductItemForm'
+import ProductItemForm from './ProductItemForm'
 import { useContext } from 'react'
 import CartContext from '@/app/store/cart-context'
 
@@ -40,8 +40,8 @@ export default function ProductItem(props: any) {
             </div>
           </div>
           
-          <div className='flex flex-row justify-between items-center'>
-            <MealItemForm onAddToCart={addToCartHandler}/>
+          <div className='flex flex-row justify-between items-center mt-4'>
+            <ProductItemForm onAddToCart={addToCartHandler}/>
 
             <button className='cursor-pointer p-3 bg-teal-500 rounded-lg'
                 type="button" 

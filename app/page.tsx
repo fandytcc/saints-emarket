@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { Navigation } from './components/ui/Navigation'
 import { getData as getCategories } from "@/app/utils/api"
 import { CATEGORIES } from './utils/const'
+import { Suspense } from 'react'
+import Loading from './products/[categoryName]/loading'
 
 export default async function Home() {
   const categories = await getCategories(CATEGORIES)
@@ -26,7 +28,9 @@ export default async function Home() {
         </div>
 
         <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-          <Navigation navLinks={navLinks}/>
+          <Suspense fallback={<Loading />}>
+            <Navigation navLinks={navLinks}/>
+          </Suspense>
         </div>
       </main>
   )
