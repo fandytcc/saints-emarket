@@ -20,7 +20,11 @@ export default function CartPage() {
   const cartItemRemoveHandler = (id: string) => {
 		cartCtx.removeItem(id)
 	}
-  
+
+  const orderHandler = () => {
+    cartCtx.clearCart()
+  }
+
   return (
     <>
       <button 
@@ -50,7 +54,8 @@ export default function CartPage() {
       {hasItems && 
         <button 
           className='cursor-pointer p-2 bg-teal-500 rounded'
-          type="button">
+          type="button"
+          onClick={orderHandler}>
             Order
         </button>}
     </>

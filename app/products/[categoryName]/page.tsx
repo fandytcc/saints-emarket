@@ -43,8 +43,11 @@ export default async function CategoryProductsPage(
     const productsPerCategory = await getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
   */
   
+    
   /** Prefetch data in server side and pass it to <ProductList/> with react query as state manager
     without props
+    do we need ReactQuery? https://tkdodo.eu/blog/you-might-not-need-react-query
+    ref: https://tanstack.com/query/latest/docs/react/guides/ssr 
   */
 
   const queryClient = getQueryClient()

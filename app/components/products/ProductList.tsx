@@ -20,7 +20,6 @@ export default function ProductList() {
     queryFn: () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
   })
 
-  console.log(data)
   if (isLoading || isFetching) {
     return (<Loading />)
   }
@@ -28,7 +27,7 @@ export default function ProductList() {
   if (error) {
     return (
       <div className="text-3xl font-bold">
-        Oops.. something went wrong
+        Oops.. something went wrong from react query error handler
       </div>
     )
   }

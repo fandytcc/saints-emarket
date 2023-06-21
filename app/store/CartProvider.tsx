@@ -64,8 +64,7 @@ const cartReducer = (state: any, action: any) => {
   return defaultCartState
 }
 
-// TODO: clear cart, bread crumb/ category navigation, button
-// do we need ReactQuery? https://tkdodo.eu/blog/you-might-not-need-react-query 
+// TODO: bread crumb/ category navigation, button
 
 const CartProvider = (props: any) => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
