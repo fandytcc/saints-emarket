@@ -8,7 +8,7 @@ export function Navigation({ navLinks }: { navLinks: any }) {
  
   return (
     <>
-      {navLinks.map((link: any) => {
+      {navLinks?.map((link: any) => {
         // const isActive = pathname.startsWith(link.href)
  
         return (

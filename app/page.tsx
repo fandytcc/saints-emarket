@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import { Navigation } from './components/ui/Navigation'
-import { getData as getCategories } from './utils/api'
+import { getData as getCategories } from "@/app/utils/api"
 import { CATEGORIES } from './utils/const'
 
 export default async function Home() {
   const categories = await getCategories(CATEGORIES)
 
-  const sortedCategories = categories.sort((a: string, b: string) => a.localeCompare(b))
+  const sortedCategories = categories?.sort((a: string, b: string) => a.localeCompare(b))
 
-  const navLinks = sortedCategories.map((category: string) => {
+  const navLinks = sortedCategories?.map((category: string) => {
     return { href: `products/${category.toLowerCase()}`, name: category }
   })
 

@@ -6,6 +6,7 @@ import { CATEGORIES } from "@/app/utils/const"
 const ProductList = dynamic(() => import('@/app/components/products/ProductList'))
 const Loading = dynamic(() => import('./loading'))
 
+
 export default async function CategoryProductsPage(
   { params: { categoryName }}: { params: { categoryName: string }}) {
 
@@ -35,6 +36,7 @@ export default async function CategoryProductsPage(
   //   )
   // }
 
+  if (!categoryName) return 
   const productsPerCategory = await getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
   
   return (
