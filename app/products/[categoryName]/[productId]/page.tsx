@@ -1,44 +1,35 @@
-'use client'
-
 import Card from "@/app/components/ui/Card"
 import Image from 'next/image'
 import dynamic from "next/dynamic"
-import { useRouter } from "next/navigation"
 import { Suspense } from "react"
+import { getData as getProduct } from "@/app/utils/api"
+import { PRODUCTS } from "@/app/utils/const"
 
 const Loading = dynamic(() => import('../loading'))
-
-async function getProduct(id: string) {
-  const res = await fetch(`https://esaintsmarket.onrender.com/products/${id}`)
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
- 
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
 
 export default async function ProductDetailPage({
   params: { categoryName, productId }
 }: { params: { categoryName: string, productId: string }}) {
-  const router = useRouter()
 
-  const product = await getProduct(productId)
+  // Codes to fetch data in client side
+  // const initialProductState = { name: '', image: '', category: '', price: 0, description: ''}
+  // const [product, setProduct] = useState(initialProductState)
+
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  // const responseData = await getProduct(productId)
+  //     setProduct(responseData)
+  //   }
+  //   fetchProduct()
+  // },[productId])
+
+  const product = await getProduct(`${PRODUCTS}/${productId}`)
+  // Fetch data in server side
+  console.log(product)
 
   return (
     <>
-      <button 
-        className="p-2 bg-teal-500 rounded mb-3" type="button"
-        onClick={() => router.back()}>
-        Go back
-      </button>
-
-      <h1 className="text-lg font-bold my-4">Product detail page </h1>
-
+     <div className="flex flex-col items-center justify-between">
       <Suspense fallback={<Loading />}>
         <Card>
           <Image 
@@ -47,12 +38,15 @@ export default async function ProductDetailPage({
               width={500}
               height={75}
               priority />
-          <div className="p-2 my-2 bg-teal-200 rounded-lg w-fit">{product.category}</div>
+          <div className="p-2 my-2 bg-teal-200 rounded-lg w-fit">
+            {product.category}
+          </div>
           <h2 className="text-lg font-bold">{product.name}</h2>
           <p className="py-2">€{product.price}</p>
           <p>{product.description}</p>
         </Card>
       </Suspense>
+    </div>
     </>
   )
 }

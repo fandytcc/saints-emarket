@@ -64,7 +64,7 @@ const cartReducer = (state: any, action: any) => {
   return defaultCartState
 }
 
-// TODO: clear cart, use ReactQuery, api route for fetching, useState & useEffect to fetch products
+// TODO: clear cart, use ReactQuery, bread crumb/ category navigation, button
 
 const CartProvider = (props: any) => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
