@@ -1,7 +1,7 @@
 'use client'
 
 import { LinkProps, Navigation } from "@/app/components/ui/Navigation"
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 
 export default function ProductsLayout({
   children,
