@@ -2,33 +2,25 @@
  
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { ReactNode } from 'react'
+
+export type LinkProps = {
+  href: string, 
+  name: string
+}
  
-export function Navigation({ navLinks }: { navLinks: any }) {
-  // const pathname = usePathname()
+export function Navigation({ link, children, className }: { link: LinkProps, children?: ReactNode, className: string }) {
+  const pathname = usePathname()
+  const isActive = pathname.startsWith(`/${link.href}`)
+  const activeClasses = isActive ? 'text-blue-700' : 'text-black'
  
   return (
-    <>
-      {navLinks?.map((link: any) => {
-        // const isActive = pathname.startsWith(link.href)
- 
-        return (
-          <Link
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-            href={link.href}
-            key={link.name}
-          >
-            <h2 className="mb-3 text-2xl font-semibold">
-              {link.name}{' '}
-              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                -&gt;
-              </span>
-            </h2>
-            <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              Find in-depth information about {link.name}.
-            </p>
-          </Link>
-        )
-      })}
-    </>
-  )
+      <Link
+        className={`${className} ${activeClasses}`}
+        href={link.href}
+        key={link.name}
+      >
+        { children }
+      </Link>
+    )
 }
