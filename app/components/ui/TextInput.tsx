@@ -5,7 +5,7 @@ interface TextInputProps {
   input: React.HTMLProps<HTMLInputElement>
 }
 
-export type Ref = HTMLInputElement
+export type Ref = HTMLInputElement | undefined
 
 
 // eslint-disable-next-line react/display-name
