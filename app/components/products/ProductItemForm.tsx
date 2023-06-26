@@ -3,11 +3,16 @@
 import { useRef, useState } from "react";
 import TextInput from "../ui/TextInput";
 
-export default function MealItemForm(props: any) {
+interface MealItemFormProps {
+  id: string, 
+  onAddToCart: (enteredAmountNumber: number) => void
+}
+
+export default function MealItemForm(props: MealItemFormProps) {
   const [amountIsValid, setAmountIsValid] = useState(true)
 	const amountInputRef = useRef<HTMLInputElement>()
   
-  const submitHandler = (event: any) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 
     if(!amountInputRef) return 

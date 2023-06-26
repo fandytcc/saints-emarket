@@ -1,6 +1,14 @@
 import Card from "../ui/Card"
 
-export default function CartItem(props: any) {
+export interface CartItemProps {
+  name: string,
+  price: string,
+  amount: number, 
+  onRemove: React.MouseEventHandler<HTMLButtonElement>,
+  onAdd: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export default function CartItem(props: CartItemProps) {
   return (
     <Card>
       <li className="p-6 mx-4">

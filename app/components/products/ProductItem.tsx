@@ -6,8 +6,9 @@ import Card from '../ui/Card'
 import ProductItemForm from './ProductItemForm'
 import { useContext } from 'react'
 import CartContext from '@/app/store/cart-context'
+import { Product } from '@/app/models/product.model'
 
-export default function ProductItem(props: any) {
+export default function ProductItem(props: Product) {
   const router = useRouter()
   
   const { categoryName } = useParams()
