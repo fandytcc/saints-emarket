@@ -10,7 +10,7 @@ interface MealItemFormProps {
 
 export default function MealItemForm(props: MealItemFormProps) {
   const [amountIsValid, setAmountIsValid] = useState(true)
-	const amountInputRef = useRef<HTMLInputElement>()
+	const amountInputRef = useRef<HTMLInputElement>(null)
   
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
