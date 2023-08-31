@@ -2,9 +2,6 @@
 
 import { Product } from "@/app/models/product.model";
 import ProductItem from "./ProductItem";
-import { useQuery } from "@tanstack/react-query";
-import { getData as getProductsPerCategory } from "@/app/utils/api"
-import { CATEGORIES } from "@/app/utils/const"
 import { useParams } from "next/navigation";
 import Loading from "@/app/products/[categoryName]/loading";
 import useHydratedProductsPerCategory from "./useHydratedProductsPerCategory";
@@ -17,11 +14,6 @@ export default function ProductList() {
   const { categoryName } = useParams()
 
   const { data, isLoading, isFetching, error }  = useHydratedProductsPerCategory(categoryName)
-
-  // const { data, isLoading, isFetching, error } = useQuery({ 
-  //   queryKey: ['hydrate-productsPerCategory'], 
-  //   queryFn: () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
-  // })
 
   // const { data: otherData } = useQuery({
   //   queryKey:['products'],
