@@ -21,7 +21,7 @@ export default function RootLayout({
       <CartProvider>
         <body className={inter.className}>
           <Header />
-          <div className='bg-teal-50 px-24 top-20 relative pt-4 min-h-screen'>
+          <div className='bg-teal-50 px-24 top-24 relative pt-4 min-h-screen'>
             <Providers>{children}</Providers>
           </div>
         </body>

@@ -24,8 +24,8 @@ export default async function ProductDetailPage({
   //   fetchProduct()
   // },[productId])
 
+  // Fetch data in server side with fetchAPI
   const product = await getProduct(`${PRODUCTS}/${productId}`)
-  // Fetch data in server side
   console.log(product)
 
   return (

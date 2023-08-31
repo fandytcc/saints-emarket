@@ -50,10 +50,12 @@ export default async function CategoryProductsPage(
     ref: https://tanstack.com/query/latest/docs/react/guides/ssr 
   */
 
+  // Retrieve the QueryClient singleton instance
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery(
     ["hydrate-productsPerCategory"], 
     () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`))
+  // obtain the dehydrated state of the prefetched queries from the query cache
   const dehydratedState = dehydrate(queryClient)
 
   console.log(dehydratedState)

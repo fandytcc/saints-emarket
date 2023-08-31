@@ -3,12 +3,12 @@
 import { useRef, useState } from "react";
 import TextInput from "../ui/TextInput";
 
-interface MealItemFormProps {
+interface ProductItemFormProps {
   id: string, 
   onAddToCart: (enteredAmountNumber: number) => void
 }
 
-export default function MealItemForm(props: MealItemFormProps) {
+export default function ProductItemForm(props: ProductItemFormProps) {
   const [amountIsValid, setAmountIsValid] = useState(true)
 	const amountInputRef = useRef<HTMLInputElement>(null)
   

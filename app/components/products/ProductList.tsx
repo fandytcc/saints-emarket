@@ -7,6 +7,7 @@ import { getData as getProductsPerCategory } from "@/app/utils/api"
 import { CATEGORIES } from "@/app/utils/const"
 import { useParams } from "next/navigation";
 import Loading from "@/app/products/[categoryName]/loading";
+import useHydratedProductsPerCategory from "./useHydratedProductsPerCategory";
 
 /** Client side component using hydrated state from react query
  *  without passing props: { products: Product[] }
@@ -15,10 +16,19 @@ import Loading from "@/app/products/[categoryName]/loading";
 export default function ProductList() {
   const { categoryName } = useParams()
 
-  const { data, isLoading, isFetching, error } = useQuery({ 
-    queryKey: ['hydrate-productsPerCategory'], 
-    queryFn: () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
-  })
+  const { data, isLoading, isFetching, error }  = useHydratedProductsPerCategory(categoryName)
+
+  // const { data, isLoading, isFetching, error } = useQuery({ 
+  //   queryKey: ['hydrate-productsPerCategory'], 
+  //   queryFn: () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
+  // })
+
+  // const { data: otherData } = useQuery({
+  //   queryKey:['products'],
+  //   queryFn: () => getProductsPerCategory(`${CATEGORIES}/${categoryName}`)
+  // })
+
+  // console.log(otherData, 'data from useQuery products query key')
 
   if (isLoading || isFetching) {
     return (<Loading />)

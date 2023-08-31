@@ -42,7 +42,7 @@ export default function ProductItem(props: Product) {
           </div>
           
           <div className='flex flex-row justify-between items-center mt-4'>
-            <ProductItemForm onAddToCart={addToCartHandler}/>
+            <ProductItemForm id={props.id} onAddToCart={addToCartHandler}/>
 
             <button className='cursor-pointer p-3 bg-teal-500 rounded-lg'
                 type="button" 
